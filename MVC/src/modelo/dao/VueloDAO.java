@@ -1,61 +1,53 @@
 package modelo.dao;
 
 import java.util.List;
-
 import modelo.dto.Vuelo;
 
-public class VueloDAO implements ICrud {
-
-    Persistencia persistencia = new Persistencia();
+public class VueloDAO extends Persistencia<Vuelo> implements ICrud {
 
     public VueloDAO() {
-        persistencia.cargar();
+        super("vuelo");
     }
 
     @Override
     public boolean crear(Object object) {
-        persistencia.lista.add((Vuelo)object);
-        persistencia.guardar();
-        return true;
+        boolean estado = lista.add((Vuelo)object);
+        guardar();
+        return estado;
     }
 
     @Override
     public Object leer(Object object) {
         int numero = (int) object;
 
-        for (Vuelo v : persistencia.lista) {
-            if (v.numero == numero) return v;
+        for (Vuelo vuelo : lista) {
+            if (vuelo.numero == numero)
+            	return vuelo;
         }
         return null;
     }
 
     @Override
     public Object actualizar(int index, Object object) {
-        persistencia.lista.set(index, (Vuelo)object);
-        persistencia.guardar();
+        lista.set(index, (Vuelo)object);
+        guardar();
         return object;
     }
 
     @Override
     public boolean eliminar(Object object) {
-        Vuelo v = (Vuelo)object;
-
-        return persistencia.lista.remove(v);
+        boolean estado = lista.remove(object);
+        guardar();
+        return estado;
     }
 
     @Override
     public int buscar(Object object) {
-        int numero = (int)object;
-
-        for (int i=0; i<persistencia.lista.size(); i++) {
-            if (persistencia.lista.get(i).numero == numero) return i;
-        }
-
-        return -1;
+        return lista.indexOf(object);
     }
 
     @Override
     public List leerTodos() {
-        return persistencia.lista;
+        return lista;
     }
 }

@@ -4,6 +4,6 @@
 /**
  * 
  */
-module vista {
+module MVC {
 	requires java.desktop;
 }

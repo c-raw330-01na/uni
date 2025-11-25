@@ -8,24 +8,11 @@ public class Vuelo implements Serializable {
     public int numero;
     public String origen;
     public String destino;
-    public Date fechaSalida;
+    public Date fechaHoraSalida;
     public Date horaSalida;
     public String aerolinea;
 
     public Asiento[][] asientos;
-
-    public Vuelo(int numero, String origen, String destino, Date fechaSalida,
-                 Date horaSalida, String aerolinea, int filas, int columnas) {
-
-        this.numero = numero;
-        this.origen = origen;
-        this.destino = destino;
-        this.fechaSalida = fechaSalida;
-        this.horaSalida = horaSalida;
-        this.aerolinea = aerolinea;
-
-        generarAsientos(filas, columnas);
-    }
 
     public void generarAsientos(int filas, int columnas) {
         asientos = new Asiento[filas][columnas];
@@ -33,7 +20,7 @@ public class Vuelo implements Serializable {
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
                 char letra = (char) ('A' + j);
-                asientos[i][j] = new Asiento(i + 1, letra);
+                asientos[i][j] =new Asiento(i + 1, letra);
             }
         }
     }
@@ -41,4 +28,53 @@ public class Vuelo implements Serializable {
     public Asiento[][] getAsientos() {
         return asientos;
     }
+    
+	public int getNumero() {
+		return numero;
+	}
+
+
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+
+
+	public String getOrigen() {
+		return origen;
+	}
+
+
+	public void setOrigen(String origen) {
+		this.origen = origen;
+	}
+
+
+	public String getDestino() {
+		return destino;
+	}
+
+
+	public void setDestino(String destino) {
+		this.destino = destino;
+	}
+
+
+	public Date getFechaHoraSalida() {
+		return fechaHoraSalida;
+	}
+
+
+	public void setFechaHoraSalida(Date fechaHoraSalida) {
+		this.fechaHoraSalida = fechaHoraSalida;
+	}
+
+
+	public String getAerolinea() {
+		return aerolinea;
+	}
+
+
+	public void setAerolinea(String aerolinea) {
+		this.aerolinea = aerolinea;
+	}
 }

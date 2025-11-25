@@ -37,6 +37,15 @@ public class VueloView extends JFrame {
 	public JTable tTablaAsientos;
 	public JTextField tfFilas;
 	public JTextField textField;
+	public JButton btnActualizar;
+	public JButton btnLeer;
+	public JButton btnEliminar;
+	public JButton btnCrear;
+	public JButton btnLeerTodos;
+	public JComboBox cbOrigen;
+	public JComboBox cbDestino;
+	public JComboBox cbAerolinea;
+	public JSpinner sFechaHora;
 
 	/**
 	 * Launch the application.
